@@ -24,7 +24,12 @@
       object-fit: contain;
       border-radius: 10px;
       box-shadow: 0 0 10px #000;
-    }
+}
+         .centered-image {
+  display: block;
+  margin: 15px auto 0;
+}
+
     .playlist {
       width: 45%;
       height: 100vh; /* each side scrolls on its own */
@@ -439,9 +444,7 @@ Hold me tight - the sadness - hoo! - never stops
     <h2 id="songTitle">Arkion's Yugamu Playlist (WIP) <3</h2>
     <p id="songDescription">Click a song title on the left !!</p>
     <audio id="player" controls></audio>
-    <div style="display: flex; justify-content: center; margin-top: 15px;">
-      <img id="songImage" src="" alt="Song artwork"/>
-      </div>
+<img id="songImage" src="" alt="Song artwork" class="centered-image"/>
   </div>
 
   <script>
