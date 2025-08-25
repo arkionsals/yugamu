@@ -11,6 +11,13 @@
       min-height: 100vh;
       background: #111; 
       color: #f5f5f5;
+
+       #songImage {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
     }
 /* background blood splatter */ body::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url("blood1.png") no-repeat center/cover, url("blood2.png") no-repeat bottom right/40%; opacity: 0.15; z-index: -1;
     }
@@ -422,11 +429,12 @@ Hold me tight - the sadness - hoo! - never stops
     <h2 id="songTitle">Arkion's Yugamu Playlist (WIP) <3</h2>
     <p id="songDescription">Click a song title on the left !!</p>
     <audio id="player" controls></audio>
+      <img id="songImage" src="" alt="Song artwork" style="margin-top: 15px; width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px; box-shadow: 0 0 10px #000;" />
   </div>
 
   <script>
     const songs = {
-      song1: { title: "deslash", desc: "Why I picked song 1...", file: "y2mate.com - DRAMAtical Murder OST  deSLASH.mp3" },
+      song1: { title: "deslash", desc: "Why I picked song 1...", file: "y2mate.com - DRAMAtical Murder OST  deSLASH.mp3",  image: "20250522194320_1.webp" },// <-- Add this },
       song2: { title: "Song Title 2", desc: "Why I picked song 2...", file: "y2mate.com - DRAMAtical Murder OST  Dramatique.mp3" },
       song3: { title: "Song Title 3", desc: "Why I picked song 3...", file: "A Lone Prayer - Persona 1 (PSP).mp3" },
       song4: { title: "Song Title 4", desc: "Why I picked song 4...", file: "04 rain tears.mp3" },
@@ -444,6 +452,10 @@ Hold me tight - the sadness - hoo! - never stops
       document.getElementById("songTitle").innerText = s.title;
       document.getElementById("songDescription").innerText = s.desc;
       document.getElementById("player").src = s.file;
+        // Set the image if available
+  const img = document.getElementById("songImage");
+  img.src = s.image || "";
+  img.style.display = s.image ? "block" : "none";
       document.getElementById("player").play();
     }
   </script>
