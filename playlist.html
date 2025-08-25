@@ -44,14 +44,6 @@
       cursor: pointer;
     }
 
- #songImage {
-  display: none;
-  width: 100%;
-  max-height: 300px;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #000;
-}
 
 @media (min-width: 768px) {
   #songImage {
@@ -95,6 +87,22 @@
     audio {
       width: 100%;
       margin-top: 15px;
+ }
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+#songImage {
+  display: none;
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+}
+      
     }
   </style>
 </head>
@@ -444,7 +452,9 @@ Hold me tight - the sadness - hoo! - never stops
     <h2 id="songTitle">Arkion's Yugamu Playlist (WIP) <3</h2>
     <p id="songDescription">Click a song title on the left !!</p>
     <audio id="player" controls></audio>
-<img id="songImage" src="" alt="Song artwork" class="centered-image"/>
+<div class="image-wrapper">
+  <img id="songImage" src="" alt="Song artwork" />
+</div>
   </div>
 
   <script>
