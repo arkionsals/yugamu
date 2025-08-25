@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Master’s Playlist</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Arial", sans-serif;
+      display: flex;
+      height: 100vh;
+      background: #111; /* dark for mood */
+      color: #f5f5f5;
+      overflow: hidden;
+    }
+
+    /* background blood splatter */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url("blood1.png") no-repeat center/cover,
+                  url("blood2.png") no-repeat bottom right/40%;
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    .playlist {
+      width: 45%;
+      overflow-y: auto;
+      padding: 20px;
+      border-right: 2px solid #333;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .song {
+      margin-bottom: 25px;
+      cursor: pointer;
+    }
+
+    .song img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .title {
+      font-size: 18px;
+      margin: 8px 0;
+      font-weight: bold;
+    }
+
+    .lyrics {
+      font-size: 14px;
+      max-height: 120px;
+      overflow-y: auto;
+      padding: 8px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+    }
+
+    .details {
+      width: 55%;
+      padding: 20px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .details h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #e63946;
+    }
+
+    .details p {
+      line-height: 1.5;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- LEFT SIDE: PLAYLIST -->
+  <div class="playlist">
+    <!-- SONG LIST ITEMS -->
+    <div class="song" onclick="playSong('song1')">
+      <img src="cover1.jpg" alt="Cover 1">
+      <div class="title">Song Title 1</div>
+      <div class="lyrics">Lyrics for song 1 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song2')">
+      <img src="cover2.jpg" alt="Cover 2">
+      <div class="title">Song Title 2</div>
+      <div class="lyrics">Lyrics for song 2 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song3')">
+      <img src="cover3.jpg" alt="Cover 3">
+      <div class="title">Song Title 3</div>
+      <div class="lyrics">Lyrics for song 3 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song4')">
+      <img src="cover4.jpg" alt="Cover 4">
+      <div class="title">Song Title 4</div>
+      <div class="lyrics">Lyrics for song 4 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song5')">
+      <img src="cover5.jpg" alt="Cover 5">
+      <div class="title">Song Title 5</div>
+      <div class="lyrics">Lyrics for song 5 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song6')">
+      <img src="cover6.jpg" alt="Cover 6">
+      <div class="title">Song Title 6</div>
+      <div class="lyrics">Lyrics for song 6 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song7')">
+      <img src="cover7.jpg" alt="Cover 7">
+      <div class="title">Song Title 7</div>
+      <div class="lyrics">Lyrics for song 7 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song8')">
+      <img src="cover8.jpg" alt="Cover 8">
+      <div class="title">Song Title 8</div>
+      <div class="lyrics">Lyrics for song 8 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song9')">
+      <img src="cover9.jpg" alt="Cover 9">
+      <div class="title">Song Title 9</div>
+      <div class="lyrics">Lyrics for song 9 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song10')">
+      <img src="cover10.jpg" alt="Cover 10">
+      <div class="title">Song Title 10</div>
+      <div class="lyrics">Lyrics for song 10 go here...</div>
+    </div>
+
+    <div class="song" onclick="playSong('song11')">
+      <img src="cover11.jpg" alt="Cover 11">
+      <div class="title">Song Title 11</div>
+      <div class="lyrics">Lyrics for song 11 go here...</div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE: EXPLANATION -->
+  <div class="details">
+    <h2 id="songTitle">Click a song!</h2>
+    <p id="songDescription">Your explanation will appear here when a song is clicked.</p>
+    <audio id="player" controls></audio>
+  </div>
+
+  <script>
+    const songs = {
+      song1: { title: "Song Title 1", desc: "Why I picked song 1...", file: "song1.mp3" },
+      song2: { title: "Song Title 2", desc: "Why I picked song 2...", file: "song2.mp3" },
+      song3: { title: "Song Title 3", desc: "Why I picked song 3...", file: "song3.mp3" },
+      song4: { title: "Song Title 4", desc: "Why I picked song 4...", file: "song4.mp3" },
+      song5: { title: "Song Title 5", desc: "Why I picked song 5...", file: "song5.mp3" },
+      song6: { title: "Song Title 6", desc: "Why I picked song 6...", file: "song6.mp3" },
+      song7: { title: "Song Title 7", desc: "Why I picked song 7...", file: "song7.mp3" },
+      song8: { title: "Song Title 8", desc: "Why I picked song 8...", file: "song8.mp3" },
+      song9: { title: "Song Title 9", desc: "Why I picked song 9...", file: "song9.mp3" },
+      song10: { title: "Song Title 10", desc: "Why I picked song 10...", file: "song10.mp3" },
+      song11: { title: "Song Title 11", desc: "Why I picked song 11...", file: "song11.mp3" }
+    };
+
+    function playSong(key) {
+      const s = songs[key];
+      document.getElementById("songTitle").innerText = s.title;
+      document.getElementById("songDescription").innerText = s.desc;
+      document.getElementById("player").src = s.file;
+      document.getElementById("player").play();
+    }
+  </script>
+</body>
+</html>
