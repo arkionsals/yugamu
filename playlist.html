@@ -32,13 +32,26 @@
 
     .playlist {
       width: 45%;
-      height: 100vh;
+     min-height: 100vh;
       overflow-y: auto;
       padding: 20px;
       border-right: 2px solid #333;
       background: rgba(0, 0, 0, 0.6);
     }
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  }
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .playlist, .details {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+  }
+    
     .details {
       width: 55%;
       height: 100vh;
