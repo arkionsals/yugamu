@@ -13,9 +13,10 @@
       color: #f5f5f5;
 
        #songImage {
+      display: none;
       width: 100%;
       max-height: 300px;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 10px;
       box-shadow: 0 0 10px #000;
     }
@@ -454,8 +455,13 @@ Hold me tight - the sadness - hoo! - never stops
       document.getElementById("player").src = s.file;
         // Set the image if available
   const img = document.getElementById("songImage");
-  img.src = s.image || "";
-  img.style.display = s.image ? "block" : "none";
+  if (s.image) {
+    img.src = s.image
+  img.style.display = "block" ;
+  } else {
+    img.src = "";
+    img.style.display = "none";
+  }
       document.getElementById("player").play();
     }
   </script>
