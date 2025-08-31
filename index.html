@@ -598,7 +598,7 @@ Heaven Aid</pre></div>
     function playSong(key) {
       const s = songs[key];
       document.getElementById("songTitle").innerText = s.title;
-      document.getElementById("songDescription").innerText = s.desc;
+      document.getElementById("songDescription").innerHTML = s.desc;
       document.getElementById("player").src = s.file;
       document.getElementById("player").play();
     }
